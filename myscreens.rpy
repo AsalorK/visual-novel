@@ -21,6 +21,69 @@ screen gotoOusideApartment():
         action Jump("OutsideApartment")
         at arrowSize
 
+screen gotoCompany():
+    imagebutton:
+        xalign 0.95
+        yalign 0.4
+        idle "arrow.png"
+        hover "arrow_hover.png"
+        action Jump("Company")
+        at arrowSize
+
+screen gotoFrontDesk():
+    imagebutton:
+        xalign 0.85
+        yalign 0.5
+        idle "arrow.png"
+        hover "arrow_hover.png"
+        action Jump("FrontDesk")
+        at arrowSize
+
+screen gotoElevator():
+    imagebutton:
+        xalign 0.95
+        yalign 0.5
+        idle "arrow.png"
+        hover "arrow_hover.png"
+        action Jump("Elevator")
+        at arrowSize
+
+screen gotoOpenArea():
+    imagebutton:
+        xalign 0.95
+        yalign 0.5
+        idle "arrow.png"
+        hover "arrow_hover.png"
+        action Jump("OpenArea")
+        at arrowSize
+
+screen gotoOfficesOutside():
+    imagebutton:
+        xalign 0.95
+        yalign 0.5
+        idle "arrow.png"
+        hover "arrow_hover.png"
+        action Jump("OfficesDoor")
+        at arrowSize
+
+screen gotoOfficesOutside2():
+    imagebutton:
+        xalign 0.95
+        yalign 0.5
+        idle "arrow.png"
+        hover "arrow_hover.png"
+        action Jump("explanation")
+        at arrowSize
+
+screen gotoOffice():
+    imagebutton:
+        xalign 0.95
+        yalign 0.5
+        idle "arrow.png"
+        hover "arrow_hover.png"
+        action Jump("Office")
+        at arrowSize
+
 screen multiple():
     imagebutton:
         xalign 0.35

@@ -10,6 +10,11 @@ define boss = Character("Boss", color="#15044f")
 define yellow = Character("Muscle", color="#d1c000")
 define mf = Character ("Male Friend")
 
+#por agora fazer só um screen de cada vez. Ou seja, nada de multiple screens
+#NADA DE MULTIPLE SCREENS
+
+#o que eu quero:
+#dar assign de um botao a uma localização sem ter que enviar por labels ou mandar para outros screens.
 
 # The game starts here.
 label start:
@@ -35,7 +40,7 @@ label start:
 label Apartment:
 
     hide screen gotoApartmentArrow
-    hide screen multiple
+    #hide screen multiple
     scene empty room night
 
 
@@ -63,7 +68,7 @@ label Apartment:
         "Ow,  my head":
             call same
 
-    label same:
+label same:
     p "(I got up as soon as I heard the alarm ring, scared and confused of my whereabouts,
     but quickly remembered I just moved to a new city)"
     p "Why am I so dramatic? I hope i get used used to this place fast"
@@ -114,15 +119,17 @@ label continue:
     $ renpy.pause(hard=True)
 
 label OutsideApartment:
-    hide screen multiple2
+    #hide screen multiple2
     hide screen gotoOusideApartment
     scene outside appartment
-    show screen multiple
+    #show screen multiple
+    show screen gotoCompany
     $ renpy.pause(hard=True)
 
 label Company:
-    hide screen multiple
-    hide screen multiple3
+    #hide screen multiple
+    #hide screen multiple3
+    hide screen gotoCompany
     scene
     scene company entrance
 
@@ -131,12 +138,14 @@ label Company:
     p "Here goes nothing…"
 
     #ENTER THE COMPANY
-    show screen multiple2
+    #show screen multiple2
+    show screen gotoFrontDesk
     $ renpy.pause(hard=True)
 
 label FrontDesk:
     scene company reception desk
-    hide screen multiple2
+    #hide screen multiple2
+    hide screen gotoFrontDesk
 
     p "(Wow, this place has a really nice atmosphere, and it looks very modern)"
     p "(I look around analyzing the place, looking a bit lost, until i notice the front desk lady coming up to me)"
@@ -171,29 +180,46 @@ label nice:
     p "(Ok, that wasn’t so bad)"
     "(So far so good, now onto the elevator)"
     #USE THE ELEVATOR TO GO UP TO THE 10TH FLOOR
-    show screen multiple3
+    #show screen multiple3
+    show screen gotoElevator
     $ renpy.pause(hard=True)
 
 label Elevator:
 
     #IN THE ELEVATOR
     scene
+    hide screen gotoElevator
     scene elevator
 
-    p "This is really nice, it has a lot of lights"
-    "(I take a few deep breaths. The nerves came pilling in)"
+    #p "This is really nice, it has a lot of lights"
+    p "(I take a few deep breaths. The nerves came pilling in)"
 
 
     #SCREEN SHAKE
     with hpunch
     with vpunch
-    p "(As soon as the elevator doors open a large open floor appears in front of me. Filled with fancy desks,
-    small decorations and office workers, the atmosphere felt yet foreign to me.)"
+
+    p "(As soon as the elevator doors open a large open floor appears in front of me."
+
+    show screen gotoOpenArea
+    $ renpy.pause(hard=True)
+
+label OpenArea:
+    hide screen gotoOpenArea
+    scene open area2
+    p "Filled with fancy desks, small decorations and office workers, the atmosphere feels very foreign to me.)"
 
     p "(Now let’s see...wheres Mr.XXX office)"
     p "(I spot a few offices to my right)"
 
     #MOVE TO THE OFFICES
+    show screen gotoOfficesOutside
+    $ renpy.pause(hard=True)
+
+label OfficesDoor:
+    hide screen gotoOfficesOutside
+    scene office door
+    #scene office
     p "(Ok, I’m in front of the office, it’s now or never. I’m so nervous.)"
 
     #CHOICE
@@ -212,6 +238,15 @@ label knockAndWait:
     boss "Come in"
 
     p "(I open the door slowly and enter the office)"
+
+    show screen gotoOffice
+    $ renpy.pause(hard=True)
+
+label Office:
+    hide screen gotoOffice
+    scene
+    scene office
+    show boss
 
     #ENTER THE OFFICE
     #MAKE HIM TALK FIRST
@@ -253,30 +288,52 @@ label continue1:
 
     p "(...)"
 
+    hide boss
+
+    show screen gotoOfficesOutside2
+    $ renpy.pause(hard=True)
+
     #Follow the BOSS around the office
     #ou deixar que ele nos guie automaticamente?
-
+    #por agora e,e vamos deixar que ele nos guie automaticamente, só pra despachar esta parte
     #OUTSIDE OF THE OFFICE
 label explanation:
+    hide screen gotoOfficesOutside2
+    scene
+    scene office door
+
+    show boss
     boss "As you just saw, the offices are in this corner. Because you are still starting,
     you will have to report everything to me at the end of the day, so get used to this place."
 
     p "(...)"
 
+    scene open area2
+    show boss
     boss "Here is the main working area. Please refrain from shouting and keep it professional"
 
     p "(...)"
 
+    scene personal desk
+    show boss
     boss "This is your desk, feel free to personalize it, but don’t paint anything or use damaging tape"
 
     p "(...)"
 
-    boss "Right here is the lounge. You can come here to take a break, drink coffee or eat lunch.
+    scene breakroom
+    show boss
+    boss "Right here is the breakroom. You can come here to take a break, drink coffee or eat lunch.
     We don’t have fixed times for lunch so you make your own schedule."
  #(aquela pequena cozinha onde eles almoçam e tal, ver melhor no ANTI P.T.).
     p "(...)"
 
-    boss "Lastly this is the conference room, where the meetings take place. Got everything down?"
+    scene conference room
+    show boss
+    boss "Lastly this is the conference room, where the meetings take place."
+
+    scene open area2
+    show boss
+    boss "Got everything down?"
 
     menu:
         "Yes, thank you.":
@@ -310,6 +367,7 @@ label rightChoice:
             call dataResearch #red
 
 label handlingReviews:
+    #YELLOW
     boss "Understood."
 
     #SHOW BOSS TEXTING
@@ -340,6 +398,8 @@ label personalAccount2:
 
     p "Understood, I’m sorry Sir."
     p "(As he finished talking, a man appeared besides me.)"
+    hide boss
+    show yellow plus boss
 
     #HANDLING REVIEWS YELLOW
 
@@ -351,6 +411,8 @@ label personalAccount2:
 
     p "(Yellow looked at me smiling while the boss left. I’m sure he already has a lot of work to
     do as they’re short on personnel, so I’m thankful for the help)"
+
+    show yellow
 
     #CHOICE
     menu:
@@ -427,6 +489,7 @@ label offerHelp:
     yellow "Yes, let’s."
 
 label dataResearch:
+    #RED
     boss "Understood."
 
     #SHOW BOSS TEXTING
@@ -457,6 +520,8 @@ label personalAccount4:
 
     p "Understood, I’m sorry Sir."
     p "(As he finished talking, a man appeared besides me.)"
+    hide boss
+    show red plus boss
 
     red "Good morning, is this the new worker?"
 
@@ -466,6 +531,8 @@ label personalAccount4:
 
     p "(Red looked at me while the boss left. I’m sure he already has a lot of work to do as
     they’re short on personnel, so I’m thankful for the help)"
+
+    show red
 
     #CHOICE
     menu:
