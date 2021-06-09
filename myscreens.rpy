@@ -63,7 +63,7 @@ screen gotoOfficesOutside():
         yalign 0.5
         idle "arrow.png"
         hover "arrow_hover.png"
-        action Jump("OfficesDoor")
+        action Jump("explanation")
         at arrowSize
 
 screen gotoOfficesOutside2():
@@ -72,7 +72,7 @@ screen gotoOfficesOutside2():
         yalign 0.5
         idle "arrow.png"
         hover "arrow_hover.png"
-        action Jump("explanation")
+        action Jump("OfficesDoor")
         at arrowSize
 
 screen gotoOffice():
@@ -84,7 +84,7 @@ screen gotoOffice():
         action Jump("Office")
         at arrowSize
 
-screen multiple():
+screen Apartment_Company1():
     imagebutton:
         xalign 0.35
         yalign 0.5
@@ -100,7 +100,7 @@ screen multiple():
         action Jump("Company")
         at arrowSize
 
-screen multiple2():
+screen OutsideApartment_FrontDesk1():
     imagebutton:
         xalign 0.05
         yalign 0.5
@@ -116,18 +116,66 @@ screen multiple2():
         action Jump("FrontDesk")
         at arrowSize
 
-screen multiple3():
+screen Company_Elevator1():
     imagebutton:
         xalign 0.05
-        yalign 0.5
+        yalign 0.3
         idle "arrow_left.png"
         hover "arrow_hover_left.png"
         action Jump("Company")
         at arrowSize
     imagebutton:
         xalign 0.95
-        yalign 0.5
+        yalign 0.3
         idle "arrow.png"
         hover "arrow_hover.png"
         action Jump("Elevator")
+        at arrowSize
+
+screen FrontDesk_OpenArea1():
+    imagebutton:
+        xalign 0.05
+        yalign 0.7
+        idle "arrow_left.png"
+        hover "arrow_hover_left.png"
+        action Jump("FrontDesk")
+        at arrowSize
+    imagebutton:
+        xalign 0.95
+        yalign 0.7
+        idle "arrow.png"
+        hover "arrow_hover.png"
+        action Jump("OpenArea")
+        at arrowSize
+
+screen Elevator_Offices1():
+    imagebutton:
+        xalign 0.05
+        yalign 0.5
+        idle "arrow_left.png"
+        hover "arrow_hover_left.png"
+        action Jump("Elevator")
+        at arrowSize
+    imagebutton:
+        xalign 0.95
+        yalign 0.5
+        idle "arrow.png"
+        hover "arrow_hover.png"
+        action Jump("OfficesDoor")
+        at arrowSize
+
+screen OpenArea_Office1():
+    imagebutton:
+        xalign 0.05
+        yalign 0.6
+        idle "arrow_left.png"
+        hover "arrow_hover_left.png"
+        action Jump("OpenArea")
+        at arrowSize
+    imagebutton:
+        xalign 0.95
+        yalign 0.6
+        idle "arrow.png"
+        hover "arrow_hover.png"
+        action Jump("Office")
         at arrowSize

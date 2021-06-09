@@ -9,8 +9,6 @@ define red = Character("BadBoy", color="#a30000")
 define boss = Character("Boss", color="#15044f")
 define yellow = Character("Muscle", color="#d1c000")
 define mf = Character ("Male Friend")
-define gui.text_size = 28
-define gui.textbox_height = 200
 #https://www.youtube.com/c/HypnagogiXGaming/abouts
 #HypnagogiX Gaming -> senhor dos tutoriais
 #por agora fazer só um screen de cada vez. Ou seja, nada de multiple screens
@@ -23,7 +21,7 @@ define gui.textbox_height = 200
 
 # The game starts here.
 label start:
-    call Variables from _call_Variables
+    call Variables
 
     jump Apartment
 
@@ -48,7 +46,7 @@ if firstStart == True:
 
     p "Finally arrived at my new place. I really got lucky landing an apartment near the company."
 
-    p "(I heard the taxi leave as I was about to open the door.)"
+    p "(I heard the taxi leave as I was about to open the door."
 
     $ firstStart = False
 
@@ -91,10 +89,10 @@ if firstTimeApartment == True:
     menu:
 
         "WHERE AM I?":
-            call same from _call_same
+            call same
 
         "Ow,  my head":
-            call same from _call_same_1
+            call same
 
     $ firstTimeApartment = False
 
@@ -166,7 +164,7 @@ label Company:
 if firstTimeCompany == True:
 
     p "(This must be it, XX PUBLISHING COMPANY.)"
-    p "(I just arrived but I’m already so tired from all the running. I need to perk up, gotta look professional)"
+    p "I just arrived but I’m already so tired. I need to perk up, gotta look professional)"
     p "Here goes nothing…"
 
     $ firstTimeCompany = False
@@ -200,10 +198,10 @@ if firstTimeFrontDesk == True:
     #CHOICE
     menu:
         "Hi, I’m here for my first day of work, I’m XXX":
-            call nice from _call_nice
+            call nice
         "Hello, I’m a new worker here, I need my badge and need to know where to go.
         Make it quick please, I’m late.":
-            call mean from _call_mean
+            call mean
 
     $ firstTimeFrontDesk = False
 
@@ -313,9 +311,9 @@ if firstTimeOfficesDoor == True:
         #"(But...I don’t have the guts to enter. I’m just going to wait until someone notices me)":
             #call knockAndWait
         "(Knock on the door and wait)":
-            call knockAndWait from _call_knockAndWait
+            call knockAndWait
         "Knock on the door and enter the office)":
-            call knockAndEnter from _call_knockAndEnter
+            call knockAndEnter
 
     $ firstTimeOfficesDoor = False
     show screen OpenArea_Office1
@@ -349,11 +347,11 @@ if firstTimeOffice == True:
     #MAKE HIM TALK FIRST
     menu:
         "Good morning, I’m- my name’s XXX. Pleasure to meet you. (Oh my god, did i just stutter…?)":
-            call continue1 from _call_continue1
+            call continue1
         "Good morning, I’m XXX. PLEASURE TO MEET YOU!!! (Did my voice came out a bit loud?)":
-            call continue1 from _call_continue1_1
+            call continue1
         "Goodmorning,I’mXXX.Pleasuretomeetyou!!! (I think I spoke too fast.)":
-            call continue1 from _call_continue1_2
+            call continue1
 
     $ firstTimeOffice = False
     hide boss
@@ -390,7 +388,7 @@ label continue1:
 
     p "(Maybe I should have just applied as an editor, this seems harder than i thought.)"
 
-    p "I'll do my best, sir."
+    p "I'll do my best, sir"
 
     boss "I'm glad."
 
@@ -447,7 +445,7 @@ label explanation:
 
     menu:
         "Yes, thank you.":
-            call continue2 from _call_continue2
+            call continue2
         "No, can you explain one more time, please?":
             jump explanation
 
@@ -461,11 +459,11 @@ label continue2:
     #CHOICE
     menu:
         "It was between handling files and handling data, right, Sir?":
-            call wrongChoice from _call_wrongChoice
+            call wrongChoice
         "It was between cleaning the place and helping you, right Sir?":
-            call wrongChoice from _call_wrongChoice_1
+            call wrongChoice
         "It was between handling reviews and data research, right Sir?":
-            call rightChoice from _call_rightChoice
+            call rightChoice
 
 label wrongChoice:
 
@@ -511,9 +509,9 @@ if firstTimeHandlingReviews == True:
 
     menu:
         "Can I use my personal account or do I need to create an office one?":
-            call personalAccount from _call_personalAccount
+            call personalAccount
         "(Don’t ask anything)":
-            call yellow from _call_yellow
+            call yellow
 
     $ firstTimeHandlingReviews = False
     hide yellow
@@ -554,7 +552,7 @@ label yellow:
 
     yellow "Okay."
 
-    p "(He looked at me smiling while the boss left. I’m sure he already has a lot of work to
+    p "(Yellow looked at me smiling while the boss left. I’m sure he already has a lot of work to
     do as they’re short on personnel, so I’m thankful for the help)"
 
     show yellow
@@ -603,7 +601,9 @@ label XXX:
     yellow "A colleague, she’s prone to these kinds of mistakes. We’ll probably have to
     go over your badge and other information."
 
-    p "I see... (That sounds complicated)"
+    p "I see... (Maybe that’s why Mr.Kim wrote something on his paper earlier? What a
+    relief, I was dramatizing over nothing. Although this seems like it’s going to be a hard thing to fix.
+    He seems worried)"
 
     menu:
         "A. (Maybe I should try to change the subject)":
@@ -662,9 +662,9 @@ if firstTimeHandlingReviews == True:
 
     menu:
         "Can I use my personal account or do I need to create an office one?":
-            call personalAccount3 from _call_personalAccount3
+            call personalAccount3
         "(Don’t ask anything)":
-            call red from _call_red
+            call red
 
     $ firstTimeHandlingReviews = False
     hide red
@@ -702,7 +702,7 @@ label red:
 
     red "Got it, boss."
 
-    p "(He looked at me while the boss left. I’m sure he already has a lot of work to do as
+    p "(Red looked at me while the boss left. I’m sure he already has a lot of work to do as
     they’re short on personnel, so I’m thankful for the help)"
 
     show red
